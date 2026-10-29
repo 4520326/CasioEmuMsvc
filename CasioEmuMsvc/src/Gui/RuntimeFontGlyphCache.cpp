@@ -8,7 +8,7 @@ RuntimeFontGlyphCache& RuntimeFontGlyphCache::Instance() {
 
 bool RuntimeFontGlyphCache::AddText(std::string_view utf8_text) {
 	bool changed = false;
-	const ImFont* current_font = nullptr;
+	ImFont* current_font = nullptr;
 	if (ImGui::GetCurrentContext() && !ImGui::GetIO().Fonts->Fonts.empty()) {
 		current_font = ImGui::GetIO().Fonts->Fonts[0];
 	}
