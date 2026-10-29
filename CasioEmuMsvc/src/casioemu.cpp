@@ -200,7 +200,7 @@ int main(int argc, char* argv[]) {
 	sentry_init(options);
 #endif
 #ifdef __ANDROID__
-    SDL_SetHint(SDL_HINT_RENDER_DRIVER, "software");
+    SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
 	chdir(SDL_AndroidGetExternalStoragePath());
 #elif defined(__APPLE__)
 	char path[1024];
