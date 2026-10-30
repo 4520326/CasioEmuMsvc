@@ -195,6 +195,19 @@ void ThemeManager::ProcessFontRebuild() {
 	ImGui_ImplSDLRenderer2_DestroyFontsTexture();
 #endif
 	RebuildFont(m_fontScale);
+	// RebuildFont() 内部调用 io.Fonts->Clear() 会删除所有 ImFont，
+// 导致 ImGui 内部的 g.Font 指针悬空，下一帧 NewFrame() 会崩溃。
+// 必须在帧边界处立即把 g.Font 指向新字体。
+if (ImGui::GetCurrentContext() != nullptr) {
+	ImGuiContext& g = *ImGui::GetCurrentContext();
+	if (g.IO.Fonts->Fonts.Size > 0) {
+		g.Font = g.IO.Fonts->Fonts[0];
+		g.FontSize = g.Font->FontSize;
+	} else {
+		g.Font = nullptr;
+		g.FontSize = 0.0f;
+	}
+}
 	if (m_fontScale != 0) {
 		ImGuiStyle igs;
 
