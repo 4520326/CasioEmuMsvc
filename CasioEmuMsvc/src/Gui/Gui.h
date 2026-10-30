@@ -264,7 +264,6 @@ inline void RebuildFont(float scale = 0.0f) {
 	const std::string runtime_glyph_text = RuntimeFontGlyphCache::Instance().GetText();
 	const bool needs_cjk_font = locale_needs_cjk || !runtime_glyph_text.empty();
 	if (needs_cjk_font) {
-#if 0
 		const std::string localized_text = g_local.CollectFontGlyphText();
 		ImFontGlyphRangesBuilder glyph_builder;
 		glyph_builder.AddText(localized_text.c_str());
@@ -334,7 +333,8 @@ inline void RebuildFont(float scale = 0.0f) {
 	}
 #else
 	if (locale_needs_cjk) {
-		const std::string cjk_font_path = GetCJKFontPath();
+	//	const std::string cjk_font_path = GetCJKFontPath();
+		std::string cjk_font_path = "";  // 临时禁用 CJK 字体加载，验证崩溃根因
 		if (!cjk_font_path.empty()) {
 			ImFontConfig merge_config = config;
 			merge_config.MergeMode = true;
