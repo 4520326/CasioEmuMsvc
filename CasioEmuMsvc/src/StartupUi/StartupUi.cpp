@@ -2167,7 +2167,7 @@ StartupSelection sui_loop() {
 			SDL_RenderSetScale(renderer2, io.DisplayFramebufferScale.x, io.DisplayFramebufferScale.y);
 			SDL_SetRenderDrawColor(renderer2, 0, 0, 0, 255);
 			SDL_RenderClear(renderer2);
-			ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
+			ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData(),renderer2);
 			SDL_RenderPresent(renderer2);
 
 			needs_render = false;
