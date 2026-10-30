@@ -292,9 +292,9 @@ void gui_loop() {
 	ImGui::Render();
 #ifndef CASIOEMU_CORE_WEB
 #ifdef SINGLE_WINDOW
-	ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
+	ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData(),renderer);
 #else
-	ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
+	ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData(),renderer);
 	SDL_RenderPresent(renderer);
 #endif
 #endif
