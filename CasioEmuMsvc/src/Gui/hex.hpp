@@ -325,7 +325,7 @@ struct MemoryEditor {
 						user_data.CursorPos = -1;
 						sprintf(user_data.CurrentBufOverwrite, format_byte, ReadFn ? ReadFn(mem_data, addr) : mem_data[addr]);
 						ImGuiInputTextFlags flags = ImGuiInputTextFlags_CharsHexadecimal | ImGuiInputTextFlags_EnterReturnsTrue | ImGuiInputTextFlags_AutoSelectAll | ImGuiInputTextFlags_NoHorizontalScroll | ImGuiInputTextFlags_CallbackAlways;
-						flags |= ImGuiInputTextFlags_AlwaysOverwrite; // was ImGuiInputTextFlags_AlwaysInsertMode
+						flags |= ImGuiInputTextFlags_OverwriteMode; // was ImGuiInputTextFlags_AlwaysInsertMode
 						ImGui::SetNextItemWidth(s.GlyphWidth * 2);
 						if (ImGui::InputText("##data", DataInputBuf, IM_ARRAYSIZE(DataInputBuf), flags, UserData::Callback, &user_data))
 							data_write = data_next = true;
@@ -675,7 +675,7 @@ struct MemoryEditor {
 						user_data.CursorPos = -1;
 						sprintf(user_data.CurrentBufOverwrite, format_byte, ReadFn ? ReadFn(mem_data, addr) : mem_data[addr]);
 						ImGuiInputTextFlags flags = ImGuiInputTextFlags_CharsHexadecimal | ImGuiInputTextFlags_EnterReturnsTrue | ImGuiInputTextFlags_AutoSelectAll | ImGuiInputTextFlags_NoHorizontalScroll | ImGuiInputTextFlags_CallbackAlways;
-						flags |= ImGuiInputTextFlags_AlwaysOverwrite; // was ImGuiInputTextFlags_AlwaysInsertMode
+						flags |= ImGuiInputTextFlags_OverwriteMode; // was ImGuiInputTextFlags_AlwaysInsertMode
 						ImGui::SetNextItemWidth(s.GlyphWidth * 2);
 						if (ImGui::InputText("##data", DataInputBuf, IM_ARRAYSIZE(DataInputBuf), flags, UserData::Callback, &user_data))
 							data_write = data_next = true;
