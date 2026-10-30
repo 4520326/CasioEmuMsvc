@@ -333,8 +333,7 @@ inline void RebuildFont(float scale = 0.0f) {
 	}
 #else
 	if (locale_needs_cjk) {
-	//	const std::string cjk_font_path = GetCJKFontPath();
-		std::string cjk_font_path = "";  // 临时禁用 CJK 字体加载，验证崩溃根因
+		const std::string cjk_font_path = GetCJKFontPath();
 		if (!cjk_font_path.empty()) {
 			ImFontConfig merge_config = config;
 			merge_config.MergeMode = true;
