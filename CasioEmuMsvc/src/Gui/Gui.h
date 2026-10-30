@@ -264,7 +264,8 @@ inline void RebuildFont(float scale = 0.0f) {
 	const std::string runtime_glyph_text = RuntimeFontGlyphCache::Instance().GetText();
 	const bool needs_cjk_font = locale_needs_cjk || !runtime_glyph_text.empty();
 	if (needs_cjk_font) {
-		const std::string localized_text = g_local.CollectFontGlyphText();
+		const bool needs_cjk_font = false;  // 临时强制关闭
+	//	const std::string localized_text = g_local.CollectFontGlyphText();
 		ImFontGlyphRangesBuilder glyph_builder;
 		glyph_builder.AddText(localized_text.c_str());
 		glyph_builder.AddText(runtime_glyph_text.c_str());
